@@ -1,89 +1,67 @@
-# DATA SAGE
+# 🧾 Garanti ve Fatura Takip Sistemi
 
-DATA SAGE, Flask ile geliştirilmiş bir web uygulamasıdır. Kullanıcının doğal dilde yazdığı sorgu önce OpenAI GPT-3.5-Turbo API’si ile SQL sorgusuna dönüştürülür. Elde edilen SQL sorgusu Python’un sqlite3 modülü ile `sakila.db` veritabanında çalıştırılarak sonuçlar elde edilir. Sonuçlar, basit bir HTML/CSS arayüzünde tablo halinde gösterilir. Arayüz tamamen sade tasarlanmıştır; Bootstrap veya benzeri ek bir kütüphane kullanılmamıştır. Proje ile birlikte veritabanı dosyası (`sakila.db`) sağlanmamaktadır; bu dosyayı kendiniz temin etmeli ve proje kök dizinine yerleştirmelisiniz.
+📦 **“Aldığın Ürünlerin Faturasını, Garantisini Unutma!”**
 
-## Özellikler
+Bu proje, kullanıcıların satın aldıkları ürünlerin fatura bilgilerini ve garanti sürelerini takip etmelerini sağlayan basit, işlevsel bir web uygulamasıdır.
 
-- Kullanıcının doğal dilde yazdığı sorguları otomatik olarak SQL sorgularına dönüştürür.  
-- OpenAI GPT-3.5-Turbo modeli ile sorgu oluşturma (OpenAI API entegrasyonu).  
-- SQLite tabanlı `sakila.db` veritabanında sorgu çalıştırma ve sonuçları çekme.  
-- Kullanıcıya basit ve sade bir HTML/CSS arayüzü sunar (Bootstrap veya benzeri framework kullanılmamıştır).  
-- Hata durumunda kullanıcıya anlamlı mesajlar gösterir (basit hata yönetimi).
+## 🔧 Teknolojiler
+- PHP (yalın)
+- MySQL
+- Bootstrap (CDN ile)
+- HTML, CSS, JavaScript
 
-## Gereksinimler
+## 📂 Özellikler
+- ✅ Kullanıcı kaydı ve şifreli giriş
+- ✅ Oturum yönetimi (Session)
+- ✅ Ürün/fatura kaydı (Create)
+- ✅ Kayıtları listeleme (Read)
+- ✅ Bilgi güncelleme (Update)
+- ✅ Kayıt silme (Delete)
+- ✅ Garanti süresi hesaplama (kalan gün)
+- ✅ Mobil uyumlu arayüz (Bootstrap)
 
-- Python 3.8 veya üzeri  
-- Flask  
-- openai  
-- tabulate  
-- sqlite3 (Python ile birlikte gelir)  
-- sakila.db (kullanıcı tarafından sağlanmalıdır)
+## 🗃️ Veritabanı Tasarımı
 
-## Kurulum Talimatları
-
-1. Projeyi klonlayın veya zip dosyasını indirin:  
-   ```bash
-   git clone https://github.com/kullanici/datasage.git
-   ```  
-2. Proje dizinine gidin:  
-   ```bash
-   cd datasage
-   ```  
-3. Bir Python sanal ortamı oluşturun ve etkinleştirin:  
-   ```bash
-   python3 -m venv venv
-   source venv/bin/activate   # Windows: venv\Scripts\activate
-   ```  
-4. Gerekli Python paketlerini yükleyin:  
-   ```bash
-   pip install -r requirements.txt
-   ```  
-5. `sakila.db` veritabanı dosyasını proje kök dizinine kopyalayın.  
-6. OpenAI API anahtarınızı ortam değişkeni olarak ayarlayın:  
-   ```bash
-   export OPENAI_API_KEY="sizin_api_anahtarınız"
-   ```  
-7. Uygulamayı başlatın:  
-   ```bash
-   flask run
-   ```  
-   veya  
-   ```bash
-   python app.py
-   ```  
-
-## Kullanım
-
-- Tarayıcınızda `http://localhost:5000` adresine gidin.  
-- Sorgunuzu doğal dilde yazın ve Gönder butonuna basın.  
-- SQL sorgusu oluşturulacak ve sonuçlar gösterilecektir.
-
-## Örnek Çıktı
-
-**Sorgu:** "Ücreti 0.99 olan filmleri göster."  
-**SQL Çıktısı:**
 ```sql
-SELECT title FROM film WHERE rental_rate = 0.99;
+CREATE TABLE users (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(100),
+  email VARCHAR(100) UNIQUE,
+  password VARCHAR(255)
+);
+
+CREATE TABLE products (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  user_id INT,
+  product_name VARCHAR(100),
+  brand VARCHAR(100),
+  purchase_date DATE,
+  warranty_period INT,
+  invoice_number VARCHAR(100),
+  notes TEXT,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (user_id) REFERENCES users(id)
+);
 ```
 
-**Örnek Sonuç:**
+## 🖼️ Ekran Görüntüleri
 
-| title             |
-|-------------------|
-| Academy Dinosaur  |
-| Ace Goldfinger    |
-| Adaptation Holes  |
-| ...               |
+![Giriş Sayfası](screenshots/login.png)
+![Ürün Listesi](screenshots/dashboard.png)
 
-## Güvenlik Notu
+> Not: `screenshots` klasörüne `.png` dosyalarını eklemeyi unutmayın.
 
-API anahtarınızı asla kod içinde açık olarak bırakmayın. Ortam değişkeni olarak kullanmanız önerilir.
+## 🎥 Tanıtım Videosu
 
-## Katkıda Bulunma
+📺 İzlemek için: [Tanıtım Videosu (YouTube)](https://youtu.be/your-video-link) *(ya da Google Drive bağlantınız)*
 
-- Issue açarak katkıda bulunabilirsiniz.  
-- Pull request göndererek kod katkısı sağlayabilirsiniz.
+## 🚀 Kurulum
 
-## Lisans
+1. Veritabanını `garanti_takip.sql` olarak oluşturun.
+2. `includes/db.php` içinde veritabanı bağlantınızı güncelleyin.
+3. Tarayıcınızda `localhost/projeniz` adresini açın.
 
-Bu proje MIT lisansı ile lisanslanmıştır.
+## 👤 Geliştirici
+
+- Adınız: **Murat**
+- Yapay zeka desteği: `AI.md` dosyasına bakınız.
