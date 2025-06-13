@@ -111,10 +111,10 @@ mysql_proje/
 ## 🖼️ Ekran Görüntüleri
 
 
-![Dashboard](![Ekran görüntüsü 2025-06-13 205544](https://github.com/user-attachments/assets/9fba9df6-03d2-4c39-99d6-2d5d2ba1e1fb)
-)  
-![Ürün Ekleme](![Ekran görüntüsü 2025-06-13 205723](https://github.com/user-attachments/assets/f0bbd1a8-41a9-426e-a761-998e7fb7bcf5)
-)  
+(![Ekran görüntüsü 2025-06-13 205544](https://github.com/user-attachments/assets/9fba9df6-03d2-4c39-99d6-2d5d2ba1e1fb)
+  
+(![Ekran görüntüsü 2025-06-13 205723](https://github.com/user-attachments/assets/f0bbd1a8-41a9-426e-a761-998e7fb7bcf5)
+  
 
 
 ---
