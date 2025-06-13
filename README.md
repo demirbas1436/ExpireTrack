@@ -105,7 +105,7 @@ mysql_proje/
 
 ## 🎬 Tanıtım Videosu
 
-[Demo Videosunu İzle](https://www.youtube.com/watch?v=4dztHVLFQJ8)
+[Demo Videosunu İzle](https://www.youtube.com/watch?v=52dLt28FdXM)
 ---
 
 ## 🖼️ Ekran Görüntüleri
