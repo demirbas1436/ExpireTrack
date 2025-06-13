@@ -105,9 +105,8 @@ mysql_proje/
 
 ## 🎬 Tanıtım Videosu
 
-YouTube tanıtım videonuzun bağlantısını aşağıya ekleyin:  
 ```
-https://www.youtube.com/watch?v=VIDEO_ID
+https://www.youtube.com/watch?v=52dLt28FdXM
 ```
 
 ---
@@ -120,7 +119,6 @@ https://www.youtube.com/watch?v=VIDEO_ID
 ![Ürün Ekleme](![Ekran görüntüsü 2025-06-13 205723](https://github.com/user-attachments/assets/f0bbd1a8-41a9-426e-a761-998e7fb7bcf5)
 )  
 
-<!-- İhtiyaç halinde daha fazla ekran görüntüsü ekleyebilirsiniz -->
 
 ---
 
