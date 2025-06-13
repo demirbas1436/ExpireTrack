@@ -1,67 +1,143 @@
-# 🧾 Garanti ve Fatura Takip Sistemi
+# 📦 MySQL PHP CRUD Projesi
 
-📦 **“Aldığın Ürünlerin Faturasını, Garantisini Unutma!”**
+Bu proje, PHP ve MySQL kullanılarak geliştirilmiş **CRUD (Create, Read, Update, Delete)** uygulamasıdır. Kullanıcı yönetimi, dosya yükleme ve görsel destek sunar.
 
-Bu proje, kullanıcıların satın aldıkları ürünlerin fatura bilgilerini ve garanti sürelerini takip etmelerini sağlayan basit, işlevsel bir web uygulamasıdır.
+---
 
-## 🔧 Teknolojiler
-- PHP (yalın)
-- MySQL
-- Bootstrap (CDN ile)
-- HTML, CSS, JavaScript
+## 📑 İçindekiler
 
-## 📂 Özellikler
-- ✅ Kullanıcı kaydı ve şifreli giriş
-- ✅ Oturum yönetimi (Session)
-- ✅ Ürün/fatura kaydı (Create)
-- ✅ Kayıtları listeleme (Read)
-- ✅ Bilgi güncelleme (Update)
-- ✅ Kayıt silme (Delete)
-- ✅ Garanti süresi hesaplama (kalan gün)
-- ✅ Mobil uyumlu arayüz (Bootstrap)
+- [🚀 Özellikler](#-özellikler)
+- [🗂️ Proje Yapısı](#️-proje-yapısı)
+- [⚙️ Gereksinimler](#️-gereksinimler)
+- [🔧 Kurulum](#-kurulum)
+- [🛠️ Veritabanı Yapılandırması](#️-veritabanı-yapılandırması)
+- [🎬 Tanıtım Videosu](#-tanıtım-videosu)
+- [🖼️ Ekran Görüntüleri](#️-ekran-görüntüleri)
+- [🔒 Güvenlik Notları](#-güvenlik-notları)
+- [✨ Katkıda Bulunma](#-katkıda-bulunma)
+- [📄 Lisans](#-lisans)
 
-## 🗃️ Veritabanı Tasarımı
+---
 
-```sql
-CREATE TABLE users (
-  id INT AUTO_INCREMENT PRIMARY KEY,
-  name VARCHAR(100),
-  email VARCHAR(100) UNIQUE,
-  password VARCHAR(255)
-);
+## 🚀 Özellikler
 
-CREATE TABLE products (
-  id INT AUTO_INCREMENT PRIMARY KEY,
-  user_id INT,
-  product_name VARCHAR(100),
-  brand VARCHAR(100),
-  purchase_date DATE,
-  warranty_period INT,
-  invoice_number VARCHAR(100),
-  notes TEXT,
-  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  FOREIGN KEY (user_id) REFERENCES users(id)
-);
+- Kullanıcı kayıt ve giriş sistemi  
+- Yetkilendirme kontrolü  
+- Ürün ekleme, listeleme, düzenleme ve silme  
+- Dosya yükleme ve görüntüleme desteği  
+- PHP `password_hash` ve `password_verify` ile güvenli şifreleme  
+- Basit, anlaşılır ve genişletilebilir kod yapısı
+
+---
+
+## 🗂️ Proje Yapısı
+
 ```
+mysql_proje/
+│
+├── add_product.php          
+├── dashboard.php            
+├── delete_product.php       
+├── edit_product.php         
+├── index.php                
+├── login.php                
+├── login_process.php        
+├── logout.php               
+├── register.php             
+├── register_process.php     
+├── view_file.php            
+│
+├── includes/
+│   ├── auth.php             
+│   └── db.php               
+│
+└── uploads/                 
+```
+
+---
+
+## ⚙️ Gereksinimler
+
+- PHP 7.x veya üzeri  
+- MySQL veya MariaDB  
+- Apache veya Nginx sunucusu  
+- Tarayıcı erişimi (Chrome, Firefox vb.)
+
+---
+
+## 🔧 Kurulum
+
+1. Proje dosyalarını sunucunuza veya `htdocs` (XAMPP) klasörüne kopyalayın.  
+2. `includes/db.php` dosyasında veritabanı bağlantı bilgilerinizi güncelleyin:
+   ```php
+   $servername = "localhost";
+   $username = "kullanici_adiniz";
+   $password = "şifreniz";
+   $dbname = "veritabani_adiniz";
+   ```
+3. Veritabanı tablolarını oluşturmak için:
+   ```sql
+   CREATE TABLE users (
+     id INT AUTO_INCREMENT PRIMARY KEY,
+     username VARCHAR(50) NOT NULL UNIQUE,
+     password VARCHAR(255) NOT NULL
+   );
+
+   CREATE TABLE products (
+     id INT AUTO_INCREMENT PRIMARY KEY,
+     name VARCHAR(100) NOT NULL,
+     description TEXT,
+     price DECIMAL(10,2),
+     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+   );
+   ```
+4. Tarayıcıda `http://localhost/mysql_proje` adresine gidin.
+
+---
+
+## 🛠️ Veritabanı Yapılandırması
+
+- `users` tablosu: Kullanıcı bilgilerini tutar.  
+- `products` tablosu: Ürün detayları ve fiyat bilgilerini tutar.  
+- Gerektiğinde ek tablolar oluşturup projeyi genişletebilirsiniz.
+
+---
+
+## 🎬 Tanıtım Videosu
+
+YouTube tanıtım videonuzun bağlantısını aşağıya ekleyin:  
+```
+https://www.youtube.com/watch?v=VIDEO_ID
+```
+
+---
 
 ## 🖼️ Ekran Görüntüleri
 
-![Giriş Sayfası](screenshots/login.png)
-![Ürün Listesi](screenshots/dashboard.png)
 
-> Not: `screenshots` klasörüne `.png` dosyalarını eklemeyi unutmayın.
+![Dashboard](![Ekran görüntüsü 2025-06-13 205544](https://github.com/user-attachments/assets/9fba9df6-03d2-4c39-99d6-2d5d2ba1e1fb)
+)  
+![Ürün Ekleme](![Ekran görüntüsü 2025-06-13 205723](https://github.com/user-attachments/assets/f0bbd1a8-41a9-426e-a761-998e7fb7bcf5)
+)  
 
-## 🎥 Tanıtım Videosu
+<!-- İhtiyaç halinde daha fazla ekran görüntüsü ekleyebilirsiniz -->
 
-📺 İzlemek için: [Tanıtım Videosu (YouTube)](https://youtu.be/your-video-link) *(ya da Google Drive bağlantınız)*
+---
 
-## 🚀 Kurulum
+## 🔒 Güvenlik Notları
 
-1. Veritabanını `garanti_takip.sql` olarak oluşturun.
-2. `includes/db.php` içinde veritabanı bağlantınızı güncelleyin.
-3. Tarayıcınızda `localhost/projeniz` adresini açın.
+- Şifreler PHP’nin yerleşik fonksiyonları ile hashlenir.  
+- `auth.php` ile yetkisiz erişimler kontrol edilir.  
+- Dosya yükleme boyutu ve türü için ek kontroller ekleyebilirsiniz.
 
-## 👤 Geliştirici
+---
 
-- Adınız: **Murat**
-- Yapay zeka desteği: `AI.md` dosyasına bakınız.
+## ✨ Katkıda Bulunma
+
+Proje, PHP öğrenmek isteyen geliştiricilere açıktır. Katkı sağlamak için fork yapıp pull request gönderin!
+
+---
+
+## 📄 Lisans
+
+Bu proje [MIT Lisansı](LICENSE) ile lisanslanmıştır. İstediğiniz gibi kullanabilir ve değiştirebilirsiniz.
